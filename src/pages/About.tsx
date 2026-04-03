@@ -107,7 +107,7 @@ const About = () => {
               Our DNA
             </h2>
           </div>
-          <MagneticButton className="px-8 py-3 text-sm text-black bg-white/10">
+          <MagneticButton className="px-8 py-3 text-sm text-white bg-white/10">
             Collab with us
           </MagneticButton>
         </div>
@@ -137,39 +137,93 @@ const About = () => {
         </div>
       </section>
 
-      <section className="bg-black border-y border-white/5 py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-8 space-y-8">
-          <div className="flex items-center gap-3">
-            <div className="h-1 w-12 bg-neonPink" />
-            <p className="uppercase tracking-[0.4em] text-xs text-white/60">
-              Crew
+      <section className="bg-black border-y border-white/5 py-24">
+        <div className="max-w-6xl mx-auto px-4 sm:px-8 space-y-12">
+          <div className="flex flex-col md:flex-row justify-between items-end gap-6 border-b border-white/10 pb-6">
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="h-1 w-12 bg-neonPink" />
+                <p className="uppercase tracking-[0.4em] text-xs text-white/60">
+                  Crew
+                </p>
+              </div>
+              <h2 className="text-4xl md:text-6xl font-display font-black tracking-tighter">
+                MEET THE SQUAD
+              </h2>
+            </div>
+            <p className="text-white/50 text-sm max-w-xs text-right hidden md:block">
+              The architects, designers, and movement specialists behind Neon Riot.
             </p>
           </div>
-          <h2 className="text-3xl md:text-5xl font-display font-black">
-            Meet the squad
-          </h2>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {crew.map((member, idx) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.08 }}
-                className="glass-card rounded-xl border border-white/10 p-4 flex flex-col gap-2"
-              >
-                <div className="h-24 w-24 rounded-full bg-gradient-to-br from-neonPink via-neonCyan to-neonYellow mx-auto shadow-lg shadow-neonPink/30" />
-                <div className="text-center space-y-1">
-                  <p className="font-display text-lg text-white">
-                    {member.name}
-                  </p>
-                  <p className="text-neonYellow text-xs uppercase tracking-[0.3em]">
-                    {member.role}
-                  </p>
-                  <p className="text-white/60 text-sm">{member.tag}</p>
-                </div>
-              </motion.div>
-            ))}
+            {crew.map((member, idx) => {
+              const styles = [
+                { border: 'group-hover:border-neonPink', glow: 'bg-neonPink/20', text: 'group-hover:text-neonPink' },
+                { border: 'group-hover:border-neonCyan', glow: 'bg-neonCyan/20', text: 'group-hover:text-neonCyan' },
+                { border: 'group-hover:border-neonYellow', glow: 'bg-neonYellow/20', text: 'group-hover:text-neonYellow' },
+                { border: 'group-hover:border-neonPurple', glow: 'bg-neonPurple/20', text: 'group-hover:text-neonPurple' },
+              ][idx % 4];
+
+              return (
+                <motion.div
+                  key={member.name}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1, type: "spring", stiffness: 100 }}
+                  whileHover={{ y: -8 }}
+                  className="group relative glass-card rounded-2xl border border-white/5 p-6 flex flex-col gap-6 overflow-hidden transition-all duration-300 hover:border-white/20 hover:bg-white/[0.02]"
+                >
+                  {/* Tech Avatar */}
+                  <div className="relative h-32 w-32 mx-auto mt-4">
+                    {/* Background Glow */}
+                    <div className={`absolute -inset-4 ${styles.glow} blur-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 rounded-full`} />
+                    
+                    {/* Rotating rings */}
+                    <div className="absolute inset-0 rounded-full border border-white/10 group-hover:border-white/20 transition-colors duration-500" />
+                    <motion.div 
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 15 + idx * 2, repeat: Infinity, ease: "linear" }}
+                      className={`absolute inset-2 rounded-full border border-dashed border-white/20 ${styles.border} transition-colors duration-500`}
+                    />
+                    <motion.div 
+                      animate={{ rotate: -360 }}
+                      transition={{ duration: 25 - idx, repeat: Infinity, ease: "linear" }}
+                      className="absolute inset-[3px] rounded-full border border-white/5"
+                    />
+                    
+                    {/* Center Core */}
+                    <div className="absolute inset-4 rounded-full bg-[#0a0a0a] border border-white/10 flex items-center justify-center overflow-hidden z-10">
+                      <div className={`absolute inset-0 ${styles.glow} blur-md opacity-30 group-hover:opacity-80 transition-opacity duration-300`} />
+                      <span className="font-display font-black text-4xl text-white mix-blend-overlay group-hover:scale-110 transition-transform duration-300 drop-shadow-md">
+                        {member.name.charAt(0)}
+                      </span>
+                    </div>
+
+                    {/* Tech details */}
+                    <div className="absolute top-[10%] right-[15%] w-1.5 h-1.5 rounded-full bg-white/40 group-hover:bg-white transition-colors" />
+                    <div className="absolute bottom-[15%] left-[10%] w-2 h-2 rounded-sm border border-white/30" />
+                  </div>
+
+                  <div className="text-center space-y-3 relative z-10 w-full">
+                    <h3 className={`font-display text-2xl text-white font-bold transition-colors duration-300 ${styles.text}`}>
+                      {member.name}
+                    </h3>
+                    
+                    <div className="inline-block px-3 py-1.5 rounded bg-white/5 border border-white/10 text-[10px] sm:text-xs uppercase tracking-[0.2em] text-white/80 whitespace-nowrap overflow-hidden text-ellipsis max-w-full">
+                      {member.role}
+                    </div>
+                    
+                    <div className="pt-4 border-t border-white/10 mt-2">
+                      <p className="text-white/40 text-xs tracking-[0.15em] uppercase font-mono">
+                        // {member.tag}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>

@@ -222,7 +222,7 @@ const Collections = () => {
       {/* Hero */}
       <section
         ref={heroRef}
-        className="relative min-h-[70vh] flex items-center overflow-hidden"
+        className="relative min-h-[85vh] flex items-center overflow-hidden"
       >
         <motion.div style={{ y, scale }} className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-ink via-background to-ink" />
@@ -231,27 +231,82 @@ const Collections = () => {
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,#050505_80%)]" />
         </motion.div>
 
+        {/* Ambient Hollow Text */}
+        <motion.div
+          style={{ y: useTransform(scrollYProgress, [0, 1], ["0%", "50%"]) }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center z-0 pointer-events-none overflow-hidden"
+        >
+          <span className="text-[18vw] font-display font-black text-transparent opacity-[0.03]" style={{ WebkitTextStroke: '2px rgba(255,255,255,0.8)' }}>
+            ARCHIVE
+          </span>
+        </motion.div>
+
         <motion.div
           style={{ opacity }}
-          className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 py-20 text-center"
+          className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 py-20 flex flex-col items-center text-center mt-10"
         >
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="flex flex-col items-center"
           >
-            <p className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 font-display uppercase text-xs tracking-[0.35em] text-neonYellow mb-6">
-              <span className="h-2 w-2 rounded-full bg-neonPink animate-ping" />
-              Full Archive
-            </p>
-            <h1 className="text-6xl md:text-9xl font-display font-black leading-none tracking-tighter drop-shadow-xl">
-              <span className="text-neonPink">ALL</span>
-              <br />
-              DROPS
-            </h1>
-            <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto mt-6">
-              Every collection. Every drop. From garage prints to global stages.
-            </p>
+            <div className="relative group mb-8">
+              <motion.div 
+                className="absolute -inset-1 rounded-full bg-gradient-to-r from-neonPink via-neonPurple to-neonCyan opacity-50 blur-sm group-hover:opacity-100 transition duration-1000 group-hover:duration-200"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+              />
+              <p className="relative inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/60 backdrop-blur-md px-6 py-3 font-display uppercase text-xs tracking-[0.4em] text-neonYellow">
+                <span className="h-2 w-2 rounded-full bg-neonPink animate-pulse shadow-[0_0_8px_#ff3bec]" />
+                Full Archive
+              </p>
+            </div>
+
+            <div className="relative">
+              {/* Corner Accents */}
+              <motion.div 
+                animate={{ rotate: 90 }}
+                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                className="absolute -top-10 -left-10 w-12 h-12 border-t-2 border-l-2 border-neonPink/50 opacity-50 hidden md:block" 
+              />
+              <motion.div 
+                animate={{ rotate: -90 }}
+                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                className="absolute -bottom-10 -right-10 w-12 h-12 border-b-2 border-r-2 border-neonCyan/50 opacity-50 hidden md:block" 
+              />
+              
+              <h1 className="text-7xl md:text-[8rem] lg:text-[10rem] font-display font-black leading-[0.85] tracking-tighter mix-blend-plus-lighter relative z-10">
+                <motion.span 
+                  initial={{ opacity: 0, x: -40 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
+                  className="block text-white"
+                >
+                  ALL
+                </motion.span>
+                <motion.span 
+                  initial={{ opacity: 0, x: 40 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
+                  className="block text-transparent bg-clip-text bg-gradient-to-br from-neonPink to-neonCyan drop-shadow-[0_0_30px_rgba(255,59,236,0.4)]"
+                >
+                  DROPS
+                </motion.span>
+              </h1>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="mt-10 max-w-2xl mx-auto glass-card border border-white/10 p-6 rounded-2xl relative overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-neonPink/5 to-neonCyan/5" />
+              <p className="text-white/80 text-lg md:text-xl relative z-10">
+                Every collection. Every drop. From garage prints to global stages. Explore the legacy.
+              </p>
+            </motion.div>
           </motion.div>
         </motion.div>
       </section>

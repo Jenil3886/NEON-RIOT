@@ -191,66 +191,140 @@ const Lookbook = () => {
       {/* Hero with Parallax */}
       <section
         ref={heroRef}
-        className="relative min-h-[80vh] overflow-hidden flex items-center"
+        className="relative min-h-[90vh] overflow-hidden flex items-center justify-center pt-20"
       >
         <motion.div style={{ y: heroY }} className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-ink via-background to-background" />
-          <div className="absolute -left-40 top-0 w-[600px] h-[600px] bg-neonPurple/25 blur-[180px] rounded-full" />
-          <div className="absolute -right-40 bottom-0 w-[500px] h-[500px] bg-neonCyan/20 blur-[200px] rounded-full" />
+          {/* Enhanced Light sources */}
+          <div className="absolute -left-20 top-[10%] w-[500px] h-[500px] bg-neonPurple/30 blur-[150px] rounded-full" />
+          <div className="absolute right-[10%] bottom-[20%] w-[400px] h-[400px] bg-neonPink/20 blur-[150px] rounded-full" />
+          <div className="absolute left-[30%] bottom-0 w-[600px] h-[600px] bg-neonCyan/10 blur-[200px] rounded-full" />
+          <div className="absolute inset-0 bg-[url('/noise.png')] opacity-20 mix-blend-overlay" />
         </motion.div>
 
         <motion.div
           style={{ scale: heroScale }}
-          className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 py-20 w-full"
+          className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-0"
         >
-          <div className="text-center space-y-6">
-            <motion.p
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 font-display uppercase text-xs tracking-[0.35em] text-neonCyan"
+          {/* Main Text Content */}
+          <div className="flex-1 w-full relative z-10 mt-10 md:mt-0">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="mb-8"
             >
-              Street Ops — Season 02
-            </motion.p>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-7xl md:text-[10rem] font-display font-black leading-none tracking-tighter"
-            >
-              <span className="text-white">LOOK</span>
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-neonPink via-neonPurple to-neonCyan">
-                BOOK
+              <span className="inline-block px-4 py-1.5 border border-white/20 bg-white/5 backdrop-blur-md rounded-full font-display text-xs uppercase tracking-[0.4em] text-neonCyan mb-6 shadow-[0_0_15px_rgba(0,234,255,0.2)]">
+                Vol. 02 — Street Ops
               </span>
-            </motion.h1>
+              
+              <div className="relative">
+                <h1 className="text-7xl md:text-[8rem] lg:text-[11rem] font-display font-black leading-[0.8] tracking-tighter uppercase">
+                  <motion.div 
+                    initial={{ opacity: 0, y: 50, rotate: -2 }}
+                    animate={{ opacity: 1, y: 0, rotate: 0 }}
+                    transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                    className="text-white drop-shadow-2xl relative inline-block group"
+                  >
+                    LOOK
+                    {/* Glitch pseudo-elements setup (using simple motion for effect) */}
+                    <motion.span 
+                      animate={{ x: [-2, 2, -1, 0], opacity: [0, 0.5, 0] }}
+                      transition={{ duration: 0.3, repeat: Infinity, repeatDelay: 4 }}
+                      className="absolute inset-0 text-neonPink -translate-x-1 translate-y-1 block pointer-events-none mix-blend-screen"
+                      aria-hidden
+                    >
+                      LOOK
+                    </motion.span>
+                  </motion.div>
+                  <br />
+                  <motion.div 
+                    initial={{ opacity: 0, y: 50, rotate: 2 }}
+                    animate={{ opacity: 1, y: 0, rotate: 0 }}
+                    transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.1 }}
+                    className="text-transparent bg-clip-text bg-gradient-to-r from-neonPink via-neonPurple to-neonCyan drop-shadow-[0_0_40px_rgba(255,59,236,0.3)] relative inline-block pl-8 md:pl-16 lg:pl-24"
+                  >
+                    BOOK
+                  </motion.div>
+                </h1>
+                
+                {/* Decorative scanning line */}
+                <motion.div 
+                  className="absolute left-0 top-0 w-1 bg-gradient-to-b from-transparent via-white/50 to-transparent h-full"
+                  animate={{ opacity: [0.2, 0.8, 0.2] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+              </div>
+            </motion.div>
 
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="text-white/50 text-lg max-w-xl mx-auto"
+              transition={{ delay: 0.4 }}
+              className="text-white/70 text-lg md:text-xl max-w-lg mb-10 leading-relaxed font-sans border-l-2 border-neonCyan/50 pl-6"
             >
-              Shot across late-night rooftops, underground garages, and
-              warehouse stages.
+              Shot across late-night rooftops, underground garages, and warehouse stages. The raw visual aesthetic of Neon Riot.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="flex justify-center gap-4 pt-4"
+              transition={{ delay: 0.6 }}
+              className="flex flex-wrap items-center gap-4 md:gap-6"
             >
-              <MagneticButton className="px-10 py-4 text-sm text-white bg-white/10">
+              <MagneticButton className="px-8 py-4 text-sm text-white font-bold bg-neonCyan hover:bg-white transition-colors duration-300 shadow-[0_0_20px_rgba(0,234,255,0.4)] border-none">
                 Shop the look
               </MagneticButton>
               <Link to="/shop">
-                <MagneticButton className="px-10 py-4 text-sm text-white bg-black/60 border border-white/20">
+                <MagneticButton className="px-8 py-4 text-sm text-white bg-white/5 border border-white/20 hover:bg-white/10 hover:border-white/40 transition-colors">
                   Full catalog
                 </MagneticButton>
               </Link>
             </motion.div>
+          </div>
+
+          {/* Floating Visual Element (Polaroids) */}
+          <div className="flex-1 w-full mt-16 lg:mt-0 relative md:block">
+            <div className="relative w-full aspect-square max-w-[450px] mx-auto">
+              {/* Polaroid 1 - Back */}
+              <motion.div 
+                initial={{ opacity: 0, rotate: -15, x: -50, scale: 0.8 }}
+                animate={{ opacity: 1, rotate: -10, x: -20, scale: 0.9 }}
+                transition={{ duration: 0.8, delay: 0.4, type: "spring" }}
+                className="absolute top-10 left-0 w-3/4 aspect-[3/4] bg-white p-3 pb-12 rounded-sm shadow-2xl z-0 pointer-events-none"
+              >
+                <div className="w-full h-full bg-ink overflow-hidden border border-gray-200">
+                  <img src="/cyber_cargos.png" alt="Behind the scenes" className="w-full h-full object-cover grayscale opacity-80 mix-blend-luminosity" />
+                </div>
+              </motion.div>
+
+              {/* Polaroid 2 - Front */}
+              <motion.div 
+                initial={{ opacity: 0, rotate: 10, y: 50, scale: 0.9 }}
+                animate={{ opacity: 1, rotate: 5, y: 20, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.6, type: "spring" }}
+                whileHover={{ scale: 1.05, rotate: 2, zIndex: 30 }}
+                className="absolute top-0 right-0 w-3/4 aspect-[3/4] bg-[#fdfdfd] p-3 md:p-4 pb-14 md:pb-16 rounded-sm shadow-[0_20px_50px_rgba(0,0,0,0.6)] z-10 cursor-crosshair border border-white/50"
+              >
+                <div className="w-full h-full bg-ink overflow-hidden relative group">
+                  <img src="/urban_hoodie.png" alt="Featured Look" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-neonPink/20 to-transparent mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+                <div className="absolute bottom-3 left-4 right-4 flex justify-between items-center px-1">
+                  <span className="font-display font-bold text-gray-800 text-lg block tracking-wide uppercase">Night Shift</span>
+                  <span className="font-display text-gray-400 text-xs text-right">04/26</span>
+                </div>
+                {/* Pin tape */}
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 bg-white/40 shadow-sm rotate-3 backdrop-blur-sm" />
+              </motion.div>
+
+              {/* UI Crosshairs */}
+              <motion.div 
+                animate={{ rotate: 90 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] aspect-square border border-white/10 border-dashed rounded-full z-0 pointer-events-none hidden md:block"
+              />
+            </div>
           </div>
         </motion.div>
       </section>

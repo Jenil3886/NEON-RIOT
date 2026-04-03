@@ -80,50 +80,136 @@ const Contact = () => {
       {/* Hero */}
       <section
         ref={heroRef}
-        className="relative min-h-[60vh] flex items-center overflow-hidden"
+        className="relative min-h-[70vh] flex items-center overflow-hidden"
       >
         <motion.div style={{ y }} className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-ink via-background to-ink" />
           <div className="absolute -left-32 bottom-0 w-[500px] h-[500px] bg-neonPink/20 blur-[180px] rounded-full" />
           <div className="absolute right-0 top-0 w-[600px] h-[600px] bg-neonCyan/15 blur-[200px] rounded-full" />
+          {/* Tech Grid Background */}
+          <div 
+            className="absolute inset-0 opacity-[0.03] z-0" 
+            style={{ 
+              backgroundImage: 'linear-gradient(rgba(255, 255, 255, 1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 1) 1px, transparent 1px)', 
+              backgroundSize: '40px 40px' 
+            }} 
+          />
         </motion.div>
 
         <motion.div
           style={{ opacity }}
           className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 py-20 w-full"
         >
-          <div className="max-w-3xl">
-            <motion.p
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 font-display uppercase text-xs tracking-[0.35em] text-neonYellow mb-6"
-            >
-              Let's connect
-            </motion.p>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+            <div className="max-w-3xl flex-1 relative z-10">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                className="flex items-center gap-4 mb-6"
+              >
+                <div className="inline-flex items-center gap-2 rounded-full border border-neonYellow/30 bg-neonYellow/5 px-4 py-2 font-display uppercase text-xs tracking-[0.35em] text-neonYellow shadow-[0_0_10px_rgba(216,255,31,0.2)]">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neonYellow opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-neonYellow"></span>
+                  </span>
+                  System Online
+                </div>
+              </motion.div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-5xl md:text-8xl font-display font-black leading-tight mb-6"
-            >
-              Collab with
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-neonPink to-neonCyan">
-                the noise.
-              </span>
-            </motion.h1>
+              <h1 className="text-6xl md:text-8xl lg:text-9xl font-display font-black leading-[0.9] mb-8 uppercase tracking-tighter">
+                <motion.span 
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.1 }}
+                  className="block text-white"
+                >
+                  Collab
+                </motion.span>
+                <motion.span 
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.2 }}
+                  className="block text-white/50"
+                >
+                  With
+                </motion.span>
+                <motion.span 
+                  initial={{ opacity: 0, scale: 0.9, x: -20 }}
+                  animate={{ opacity: 1, scale: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4, type: "spring" }}
+                  className="block text-transparent bg-clip-text bg-gradient-to-r from-neonPink via-neonPurple to-neonCyan drop-shadow-[0_0_30px_rgba(255,59,236,0.3)] mt-2"
+                >
+                  The Noise.
+                </motion.span>
+              </h1>
 
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="text-white/60 text-lg max-w-xl"
-            >
-              From dance crews to music videos, warehouse events to global
-              brands — if it moves at night, we want to dress it.
-            </motion.p>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6 }}
+                className="text-white/70 text-lg md:text-xl max-w-xl font-sans leading-relaxed border-l-2 border-neonPink/50 pl-4"
+              >
+                From dance crews to music videos, warehouse events to global brands — if it moves at night, we want to dress it.
+              </motion.p>
+            </div>
+
+            {/* Floating Contact Nodes */}
+            <div className="flex-1 w-full relative hidden md:block min-h-[400px]">
+              {/* Center Globe/Node */}
+              <motion.div 
+                animate={{ rotate: 360 }}
+                transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] border border-white/10 rounded-full border-dashed z-0 opacity-50"
+              />
+              <motion.div 
+                animate={{ rotate: -360 }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] border border-neonCyan/30 rounded-full z-0 opacity-50"
+              />
+              <motion.div 
+                animate={{ rotate: 360 }}
+                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-neonPink rounded-full z-0 shadow-[0_0_15px_#ff3bec]"
+              />
+              
+              {/* Detail Items */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1, y: [0, -10, 0] }}
+                transition={{ 
+                  scale: { type: "spring", delay: 0.5 },
+                  y: { repeat: Infinity, duration: 4, ease: "easeInOut" } 
+                }}
+                className="absolute top-[10%] left-[20%] w-16 h-16 rounded-2xl bg-black/60 backdrop-blur-md border border-neonPink flex items-center justify-center shadow-[0_0_20px_rgba(255,59,236,0.3)] text-neonPink z-10"
+              >
+                <AtSign size={28} />
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1, y: [0, 15, 0] }}
+                transition={{ 
+                  scale: { type: "spring", delay: 0.7 },
+                  y: { repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 } 
+                }}
+                className="absolute bottom-[10%] left-[30%] w-20 h-20 rounded-2xl bg-black/60 backdrop-blur-md border border-neonCyan flex items-center justify-center shadow-[0_0_20px_rgba(0,234,255,0.3)] text-neonCyan z-10"
+              >
+                <Mail size={32} />
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1, y: [0, -12, 0] }}
+                transition={{ 
+                  scale: { type: "spring", delay: 0.9 },
+                  y: { repeat: Infinity, duration: 4.5, ease: "easeInOut", delay: 2 } 
+                }}
+                className="absolute top-[40%] right-[10%] w-14 h-14 rounded-2xl bg-black/60 backdrop-blur-md border border-neonYellow flex items-center justify-center shadow-[0_0_20px_rgba(216,255,31,0.3)] text-neonYellow z-10"
+              >
+                <MapPin size={24} />
+              </motion.div>
+            </div>
           </div>
         </motion.div>
       </section>

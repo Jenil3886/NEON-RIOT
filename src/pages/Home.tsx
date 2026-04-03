@@ -15,7 +15,7 @@ import { ArrowRight, Zap, Shield, Flame, Sparkles } from "lucide-react";
 
 const featuredProducts = products;
 
-// Animated counter component
+// Animated counter componentnpm
 const AnimatedCounter = ({ target }: { target: string }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });

@@ -333,22 +333,25 @@ const Home = () => {
                 transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
               />
 
-              <div className="relative h-full overflow-hidden rounded-[24px] border border-white/10 bg-surface shadow-2xl">
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-t from-neonPink/20 via-transparent to-neonCyan/20 opacity-0"
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                />
-                <img
-                  src="/urban_hoodie.png"
-                  alt="Neon Riot look"
-                  className="h-full w-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+              <div className="relative h-full rounded-[24px] border border-white/10 bg-surface shadow-2xl overflow-visible">
+                {/* Masked imagery layer keeps rounded corners while badges can overflow */}
+                <div className="absolute inset-0 rounded-[24px] overflow-hidden">
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-t from-neonPink/20 via-transparent to-neonCyan/20 opacity-0"
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  <img
+                    src="/urban_hoodie.png"
+                    alt="Neon Riot look"
+                    className="h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                </div>
 
                 {/* Floating badges */}
                 <motion.div
-                  className="absolute -right-4 top-8 bg-black/80 backdrop-blur-xl border border-white/10 rounded-xl px-4 py-3"
+                  className="absolute right-3 top-6 bg-black/80 backdrop-blur-xl border border-white/10 rounded-xl px-4 py-3 shadow-lg"
                   animate={{ y: [0, -8, 0] }}
                   transition={{
                     repeat: Infinity,
